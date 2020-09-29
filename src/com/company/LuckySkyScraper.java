@@ -2,7 +2,8 @@ package com.company;
 
 public class LuckySkyScraper {
 
-    static public void floorList(int totalRealFloors){
+    // BASIC LOGIC
+    /*static public void floorList(int totalRealFloors){
         // loop through real floor numbers
         var fakeFloor = 1;
         for(var realFloor = 1; realFloor <= totalRealFloors; realFloor++){
@@ -13,6 +14,19 @@ public class LuckySkyScraper {
                 fakeFloor++;
             } while(fakeFloor % 10 == 4 || fakeFloor % 100 == 13);
         }
+    }*/
+
+    static public int toRealFloor(int fakeFloorGoal){
+        var fakeFloor = 1;
+        for(var realFloor = 1; realFloor <= fakeFloorGoal; realFloor++){
+           if(fakeFloorGoal == fakeFloor) {
+               return realFloor; // this ends the loop and the method
+           }
+           do {
+                fakeFloor++;
+            } while(fakeFloor % 10 == 4 || fakeFloor % 100 == 13);
+        }
+        return -1; // could not find real floor number
     }
 
 }
