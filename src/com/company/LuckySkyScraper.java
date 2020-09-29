@@ -2,24 +2,18 @@ package com.company;
 
 public class LuckySkyScraper {
 
-    // BASIC LOGIC
-    /*static public void floorList(int totalRealFloors){
-        // loop through real floor numbers
-        var fakeFloor = 1;
-        for(var realFloor = 1; realFloor <= totalRealFloors; realFloor++){
-            System.out.println("realFloor: " + realFloor + " fakeFloor: " + fakeFloor);
-            // add 1 to fakeFloor and continue adding 1 as long as
-            // fakeFloor ends with 4 or ends with 13
-            do {
-                fakeFloor++;
-            } while(fakeFloor % 10 == 4 || fakeFloor % 100 == 13);
-        }
-    }*/
+    static private boolean showTiming = true;
 
     static public int toRealFloor(int fakeFloorGoal){
+        var startTime = System.nanoTime();
         var fakeFloor = 1;
         for(var realFloor = 1; realFloor <= fakeFloorGoal; realFloor++){
            if(fakeFloorGoal == fakeFloor) {
+               var endTime = System.nanoTime();
+               var timeTaken = endTime - startTime;
+               if(showTiming){
+                   System.out.println("toRealFloor took (ns): " + timeTaken);
+               }
                return realFloor; // this ends the loop and the method
            }
            do {
@@ -30,11 +24,17 @@ public class LuckySkyScraper {
     }
 
     static public int toFakeFloor(int realFloorGoal){
+        var startTime = System.nanoTime();
         var fakeFloor = 1;
         for(var realFloor = 1; realFloor < realFloorGoal; realFloor++){
             do {
                 fakeFloor++;
             } while(fakeFloor % 10 == 4 || fakeFloor % 100 == 13);
+        }
+        var endTime = System.nanoTime();
+        var timeTaken = endTime - startTime;
+        if(showTiming) {
+            System.out.println("toFakeFloor took (ns): " + timeTaken);
         }
         return fakeFloor;
     }
